@@ -1,5 +1,5 @@
 ---
-title: "toolbox-beginner-Rstudio"
+title: "Toolbox-beginner-Rstudio"
 author: "Natalia Galarza"
 date: "2026-08-18"
 output: pdf_document
@@ -11,20 +11,130 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Hi! I am doing this cheat-sheet for myself so I can organize and recall all the info I have gotten from some R and Rstudio introductory courses. I am not a data scientist, I don't think like one. All this information won't just easily stick in my brain, nor is it obvious for me which command to use each time. Anyway, my purpose is to make a useful list of all these bureaucratic, dull commands.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# R packages
 
-```{r cars}
-summary(cars)
+**Quick assumption before starting**: Git and GitHub are already configured in RStudio.
+
+## **Part 1**
+
+### Install a package from CRAN
+```{r, eval=FALSE}
+install.packages("packagename")
 ```
 
-## Including Plots
+### Install multiples packages from CRAN
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r, eval=FALSE}
+install.packages(c("packagename", "packagename2", "packagename3"))
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+### Install a package from GitHub
+
+```{r, eval=FALSE}
+install.packages("pak")
+pak::pkg_install("author/package")
+```
+
+### Install a package from bioconductor
+
+```{r, eval=FALSE}
+install.packages("BiocManager")
+BiocManager::install("packagename")
+```
+
+**Note**: important for a bioinformatician, I guess.../>_<\
+
+## **Part 2**: after installing a package you need to load it, which just means opening it.
+
+### Load a package
+
+```{r, eval=FALSE}
+library(packagename)
+```
+
+**Note**: never put package name in quotes here.
+
+*Alternatively* - 4th panel: packages > check the box of packagename.
+
+## **Part 3**: commands useful to know things about the stuff you just did before. all of the following probably come in a sequence when executing.
+
+### Check installed packages
+
+```{r, eval=FALSE}
+installed.packages()
+or
+library()
+```
+
+**Note**: if you are not sure if you have already installed a package, use either of these codes, with nothing between the parentheses to check.
+
+*Alternatively* - 4th panel: packages > view the list.
+
+### Check packages that need updates
+
+```{r, eval=FALSE}
+old.packages()
+```
+
+**Note**: checks which installed packages have newer versions available, but it does not update them.
+
+### Update installed packages
+
+```{r, eval=FALSE}
+update.packages()
+```
+
+**Note**: checks your installed packages and lets you update the ones that have newer versions available, like in one go you can update all the packages you just checked that need a package with the previous command just before this one >.<.
+
+### Update a specific package
+
+```{r, eval=FALSE}
+install.packages("packagename")
+```
+
+**Part 4**: reversing stuff.
+
+### Unload a package
+
+```{r, eval=FALSE}
+detach("package:ggplot2", unload = TRUE)
+```
+
+**Note**: removes the loaded package from the current R session.
+
+*Alternatively* - 4th panel: packages > uncheck box of packagename
+
+### Uninstall a package
+
+```{r, eval=FALSE}
+remove.packages("ggplot2")
+```
+
+*Alternatively* - 4th panel: Packages > click X on packagename
+
+## **Part 5**: other few things you might need to know, mainly for better understanding what you've got.
+
+### Check session information
+
+```{r, eval=FALSE}
+sessionInfo()
+```
+
+**Note**: shows the R version, operating system and packages loaded in the current session.
+
+### View package help
+
+```{r, eval=FALSE}
+help(package = "packagename")
+```
+
+### View package vignettes
+
+```{r, eval=FALSE}
+browseVignettes()
+browseVignettes("packagename")
+```
+
+**Note**: vignettes are longer guides or tutorials created to explain how to use a package and its functions. the first command will show vignettes available from installed packages, while the second command shows only the vignettes available for your specific package.
