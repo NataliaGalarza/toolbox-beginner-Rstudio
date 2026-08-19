@@ -56,7 +56,7 @@ library(packagename)
 
 **Note**: never put package name in quotes here.
 
-*Alternatively* - 4th panel: packages > check the box of packagename.
+***Alternatively*** - 4th panel: *packages > check the box of packagename*
 
 ## **Part 3**: commands useful to know things about the stuff you just did before. all of the following probably come in a sequence when executing.
 
@@ -70,7 +70,7 @@ library()
 
 **Note**: if you are not sure if you have already installed a package, use either of these codes, with nothing between the parentheses to check.
 
-*Alternatively* - 4th panel: packages > view the list.
+***Alternatively*** - 4th panel: *packages > view the list*
 
 ### Check packages that need updates
 
@@ -104,7 +104,7 @@ detach("package:ggplot2", unload = TRUE)
 
 **Note**: removes the loaded package from the current R session.
 
-*Alternatively* - 4th panel: packages > uncheck box of packagename
+***Alternatively*** - 4th panel: *packages > uncheck box of packagename*
 
 ### Uninstall a package
 
@@ -112,7 +112,7 @@ detach("package:ggplot2", unload = TRUE)
 remove.packages("ggplot2")
 ```
 
-*Alternatively* - 4th panel: Packages > click X on packagename
+***Alternatively*** - 4th panel: *Packages > click X on packagename*
 
 ## **Part 5**: other few things you might need to know, mainly for better understanding what you've got.
 
@@ -138,3 +138,170 @@ browseVignettes("packagename")
 ```
 
 **Note**: vignettes are longer guides or tutorials created to explain how to use a package and its functions. the first command will show vignettes available from installed packages, while the second command shows only the vignettes available for your specific package.
+
+***
+
+# Projects
+
+## About creating and opening
+
+### Creating a project
+
+1. **New directory** 
+
+*file > new project > new directory > new project*
+
+\medskip
+
+2. **Existing directory**
+
+As far as I understand, you use this when you already have a folder locally with files you want to work with, and you want to turn that folder into an RStudio project.
+
+\medskip
+
+*file > new project > existing directory > select existing folder > create project*
+
+\medskip
+
+**Note**: this only creates the RStudio Project inside the existing folder, it does not automatically mean that the project is under Git or GitHub version control.
+
+\medskip
+
+If you also want to put this existing project under Git version control:
+
+\medskip
+
+First, open Git Bash and navigate to the project folder
+
+```{r, eval=FALSE}
+cd ~/c/Users/Nataliaa/Desktop/projectname
+```
+
+Then initialize Git inside that folder
+
+```{r, eval=FALSE}
+git init
+```
+
+**Note**: this creates a local Git repository inside the current project folder.
+
+\medskip
+
+Then stage all files and changes inside the current directory
+
+```{r, eval=FALSE}
+git add .
+```
+
+Then create the first commit
+
+```{r, eval=FALSE}
+git commit -m "Initial commit"
+```
+
+**Note**: -m refers to the commit message, so inside the quotation marks you can write the message you want for that commit.
+
+\medskip
+
+Up to this point, the project is under local Git version control only.
+
+\medskip
+
+If you also want to link this local project to GitHub
+
+\medskip
+
+*open GitHub > create new repo and give it the same name as the R project > copy the repo URL*
+
+\medskip
+
+Then
+
+\medskip
+
+*open Git > run the commands provided at the very end of your chosen repo (...or push an existing repository from the command line)*
+
+```{r, eval=FALSE}
+git remote add origin https://github.com/USERNAME/REPOSITORY.git
+```
+
+Then push your local project to GitHub for the first time
+
+```{r, eval=FALSE}
+git push -u origin main
+```
+
+**Note**: -u establishes origin/main as the upstream branch. After this first push, future pushes can normally be done simply by pushing on Rstudio or with the 'git push' command.
+
+\medskip
+
+3. **Version Control**
+
+As far as I understand, this is the same as **cloning**, meaning that you use this when you've created a repo on Github first or you are forking someone else's repo, and you want to clone the repo into your computer and open it as an RStudio project.
+
+\medskip
+
+*file > new project > version control > Git*
+
+\medskip
+
+Then: 
+
+\medskip
+
+*copy and paste repository URL from GitHub > select local location > create project*
+
+**Note**: again, this clones an existing git repository from github to your computer and opens it as an RStudio project.
+
+### Opening a project
+ 
+1. Double click on '.Rproj' on your computer
+
+2. *file > open project*
+
+3. *project toolbar (upper-right) > open project*
+
+## About closing and switching
+
+### Closing a project
+
+1. *file > close project*
+
+2. *project toolbar (upper-right) > close project*
+
+### Switching to another project
+
+Closing current project and opening another project in the same window:
+
+\medskip
+
+*project toolbar (upper-right) > open project*
+
+\medskip
+
+Without closing the current one:
+
+\medskip
+
+*project toolbar (upper-right) > open project in new session*
+
+***
+
+# GitHub and Git
+
+### Git configuration
+
+```{r, eval=FALSE}
+git config --list
+```
+
+**Note**: shows the current git configuration, meaning basically username and email.
+
+\medskip
+
+If you want to change this, then:
+
+```{r, eval=FALSE}
+git config --global user.name "Your Name" 
+git config --global user.email "your@email.com"
+```
